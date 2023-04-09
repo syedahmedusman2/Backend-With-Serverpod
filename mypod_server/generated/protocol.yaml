@@ -1,0 +1,8 @@
+example:
+  - hello:
+  - getProduct:
+product:
+  - getProducts:
+  - insertProduct:
+  - updateProduct:
+  - deleteProduct:

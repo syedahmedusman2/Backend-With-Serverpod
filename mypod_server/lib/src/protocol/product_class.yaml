@@ -1,0 +1,8 @@
+class: Product
+table: product # For generating table in database
+fields:
+  title: String
+  price: double
+  description: String
+  unit: int
+  isAvailable: bool
