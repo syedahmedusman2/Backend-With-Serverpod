@@ -83,6 +83,21 @@ class MyHomePageState extends State<MyHomePage> {
 
     }
   }
+
+  fetchProduct()async{
+    try{
+     var result = await client.product.getProducts();
+     if(result.isNotEmpty){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Product fetch successfuly")));
+      setState(() {
+        _resultMessage = "${result.length} products in the table";
+      });
+     }
+    }on Exception catch(e){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("There is an error $e")));
+
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,7 +120,7 @@ class MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
               child: ElevatedButton(
-                onPressed: addproduct,
+                onPressed: fetchProduct,
                 child: const Text('Send to Server'),
               ),
             ),
